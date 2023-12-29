@@ -16,6 +16,7 @@ class ScheduleController extends Controller
         $user = $request->user();
         $schedules = Schedule::where('student_id', '=', $user->id)->get();
         return ScheduleResource::collection($schedules->load('subject'));
+        // return ScheduleResource::collection(Schedule::all()) ;
     }
 
     /**
