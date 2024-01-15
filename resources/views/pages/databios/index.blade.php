@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Registers')
+@section('title', 'Biodata')
 
 @push('style')
     <!-- CSS Libraries -->
@@ -11,12 +11,12 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>All Registers</h1>
+                <h1>All Biodatas</h1>
 
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-                    <div class="breadcrumb-item"><a href="#">Registers</a></div>
-                    <div class="breadcrumb-item">All Register</div>
+                    <div class="breadcrumb-item"><a href="#">Biodatas</a></div>
+                    <div class="breadcrumb-item">All Biodata</div>
                 </div>
             </div>
             <div class="section-body">
@@ -31,15 +31,15 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4>All Registers</h4>
+                                <h4>All Biodata</h4>
                                 <div class="section-header-button">
-                                    <a href="{{ route('register.create') }}" class="btn btn-primary">New Registers</a>
+                                    <a href="{{ route('databio.create') }}" class="btn btn-primary">New Biodata</a>
                                 </div>
                             </div>
                             <div class="card-body">
 
                                 <div class="float-right">
-                                    <form method="GET", action="{{ route('register.index') }}">
+                                    <form method="GET", action="{{ route('databio.index') }}">
                                         <div class="input-group">
                                             <input type="text" class="form-control" placeholder="Search" name="name">
                                             <div class="input-group-append">
@@ -55,79 +55,55 @@
                                     <table class="table-striped table">
                                         <tr>
 
-                                            <th>NAMA IBU</th>
-                                            <th>NO KTP IBU</th>
-                                            <th>TANGGAL LAHIR IBU</th>
-                                            <th>AGAMA</th>
-                                            <th>PENDIDIKAN IBU</th>
-                                            <th>PEKERJAAN IBU</th>
-                                            <th>RANGE PENDAPATAN IBU</th>
-                                            <th>PENGHASILAN IBU</th>
-                                            <th>STATUS HIDUP IBU</th>
-                                            <th>ALAMAT</th>
-                                            <th>NO HANDPHONE</th>
-                                            <th>PROVINSI</th>
-                                            <th>KABUPATEN</th>
-                                            <th>KECAMATAN</th>
-                                            <th>KELURAHAN</th>
+                                            <th>Jumlah Saudara Masih Sekolah SD</th>
+                                            <th>Jumlah Saudara Masih Sekolah SMP</th>
+                                            <th>Jumlah Saudara Masih Sekolah SMA</th>
+                                            <th>Jumlah Saudara Masih Kuliah</th>
+                                            <th>Tagihan PDAM</th>
+                                            <th>Tagihan PLN</th>
+                                            <th>Status Rumah</th>
+                                            <th>Daya PLN</th>
+                                            <th>Ikut Beasiswa KIP-Kuliah</th>
                                             <th>Action</th>
                                         </tr>
-                                        @foreach ($registers as $register)
+                                        @foreach ($databios as $databio)
                                             <tr>
                                                 <td>
-                                                    {{ $register->nama }}
+                                                    {{ $databio->jumlah_sd }}
                                                 </td>
                                                 <td>
-                                                    {{ $register->ktp }}
+                                                    {{ $databio->jumlah_smp }}
                                                 </td>
                                                 <td>
-                                                    {{ $register->tanggal }}
+                                                    {{ $databio->jumlah_sma }}
                                                 </td>
                                                 <td>
-                                                    {{ $register->agama }}
+                                                    {{ $databio->jumlah_kuliah }}
                                                 </td>
                                                 <td>
-                                                    {{ $register->pendidikan }}
+                                                    {{ $databio->pdam }}
                                                 </td>
                                                 <td>
-                                                    {{ $register->pekerjaan }}
+                                                    {{ $databio->pln }}
                                                 </td>
                                                 <td>
-                                                    {{ $register->pendapatan }}
+                                                    {{ $databio->rumah }}
                                                 </td>
                                                 <td>
-                                                    {{ $register->penghasilan }}
+                                                    {{ $databio->daya_pln }}
                                                 </td>
                                                 <td>
-                                                    {{ $register->status }}
-                                                </td>
-                                                <td>
-                                                    {{ $register->alamat }}
-                                                </td>
-                                                <td>
-                                                    {{ $register->no_hp }}
-                                                </td>
-                                                <td>
-                                                    {{ $register->provinsi }}
-                                                </td>
-                                                <td>
-                                                    {{ $register->kab }}
-                                                </td>
-                                                <td>
-                                                    {{ $register->kec }}
-                                                </td>
-                                                <td>
-                                                    {{ $register->kel }}
+                                                    {{ $databio->beasiswa }}
                                                 </td>
                                                 <td>
                                                     <div class="d-flex justify-content-center">
-                                                        <a href='{{ route('register.edit', $register->id) }}'
+                                                        <a href='{{ route('databio.edit', $databio->id) }}'
                                                             class="btn btn-sm btn-info btn-icon">
                                                             <i class="fas fa-edit"></i>
                                                             Edit
                                                         </a>
 
-                                                        <form action="{{ route('register.destroy', $register->id) }}" method="POST"
+                                                        <form action="{{ route('databio.destroy', $databio->id) }}" method="POST"
                                                             class="ml-2">
                                                             <input type="hidden" name="_method" value="DELETE" />
                                                             <input type="hidden" name="_token"
@@ -143,7 +119,7 @@
                                     </table>
                                 </div>
                                 <div class="float-right">
-                                    {{ $registers->withQueryString()->links() }}
+                                    {{ $databios->withQueryString()->links() }}
                                 </div>
                             </div>
                         </div>

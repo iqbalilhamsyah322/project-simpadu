@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class ScheduleController extends Controller
 {
-        public function index(Request $request)
+    public function index(Request $request)
     {
         $schedules = DB::table('schedules')
             ->when($request->input('subject_id'), function ($query, $subject_id) {

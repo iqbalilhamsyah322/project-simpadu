@@ -3,7 +3,7 @@
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ScheduleController;
-use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\DatabioController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,7 +30,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('user', UserController::class);
     Route::resource('schedule', ScheduleController::class);
     Route::resource('subject', SubjectController::class);
-    Route::resource('register', RegisterController::class);
+    Route::resource('databio', DatabioController::class);
 });
 
 
